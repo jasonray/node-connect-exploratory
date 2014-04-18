@@ -1,0 +1,21 @@
+{
+  "name": "node-connect-exploratory",
+  "version": "0.0.0",
+  "description": "node-connect-exploratory ========================",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jasonray/node-connect-exploratory.git"
+  },
+  "author": "jason ray",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/jasonray/node-connect-exploratory/issues"
+  },
+  "dependencies": {
+    "connect": "~2.14.4"
+  }
+}
