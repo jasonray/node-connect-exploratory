@@ -51,3 +51,14 @@ Connection: keep-alive
 
 "hello world"
 ```
+
+Notes
+=====
+These notes are more on discovery related to node.js, and less related to this particular project.
+
+Directory structure
+-------------------
+* `/libs`: custom classes/functions/modules
+* `/spec`: acceptance tests
+* `/tests`: unit tests
+* `/resources`: API endpoints, consider adding `/resources/{resource}/libs` to group functionality
