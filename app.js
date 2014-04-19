@@ -19,20 +19,32 @@ var app = connect()
 	next();
 })
 
-.use(function(req, res, next) {
-	// console.log('begin PEP');
+.use('/api', function(req, res, next) {
+	console.log('checking PEP');
 	setTimeout(function() {
 		// console.log('end PEP');
 		next();
 	}, 500);
 })
 
-.use(function(req, res, next) {
+.use('/api/fetch/expensive', function(req, res, next) {
 	// console.log('begin resource processing, fetch data which will take 1s');
 	setTimeout(function() {
 		// console.log('end fetch data');
-		res.end('hello world\n');
-	}, 1000);
+		res.end('retrieved data \n');
+	}, 2000);
+})
+
+.use('/api/fetch/light', function(req, res, next) {
+	// console.log('begin resource processing, fetch data which will take 1s');
+	setTimeout(function() {
+		// console.log('end fetch data');
+		res.end('retrieved data \n');
+	}, 500);
+})
+
+.use('/public/hello', function(req, res, next) {
+	res.end('hello world\n');
 });
 
 http.createServer(app).listen(8888);
