@@ -6,8 +6,8 @@ The project uses:
 - `connect` for handling the http listener and routing
 
 
-Install
-=======
+Install it
+==========
 Install node:
 ```
 brew install node
@@ -19,12 +19,22 @@ Install node dependencies
 npm install 
 ```
 
-Usage
-=====
-To run, run `node` with app.js:
+Run it
+======
+Easiest, run the startup script (you may need to `chmod a+x run.sh`)
+```
+./run.sh
+```
+
+This script runs node with app.js, and pipes the output to a bunyan formatter to make the stdout easier to read.
+
+To run manually, run `node` with app.js:
 ```
 node app.js
 ```
+
+Consume it
+==========
 
 Hello
 -----
@@ -32,7 +42,7 @@ The `hello` service returns a simple hello world phrase.
 
 A simple usage of it would be:
 ```
-> curl -i http://127.0.0.1:8888/hello?q=q
+> curl -i http://127.0.0.1:8888/public/hello
 HTTP/1.1 200 OK
 Content-Type: application/json
 Content-Length: 13

@@ -16,6 +16,7 @@
     "url": "https://github.com/jasonray/node-connect-exploratory/issues"
   },
   "dependencies": {
-    "connect": "~2.14.4"
+    "connect": "~2.14.4",
+    "bunyan": "~0.22.3"
   }
 }
