@@ -1,5 +1,8 @@
 var connect = require("connect");
 var http = require("http");
+var logger = require('bunyan').createLogger({
+		name: "server"
+	});
 
 var numberOfActiveCalls = 0;
 var app = connect()
