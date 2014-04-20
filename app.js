@@ -2,7 +2,8 @@ var connect = require("connect");
 var logger = require('bunyan').createLogger({
 	name: "server"
 });
-var port = 8888;
+var httpPort = 8888;
+var httpsPort = 8889;
 
 var numberOfActiveCalls = 0;
 
@@ -15,8 +16,12 @@ var app = connect()
 
 .use(connect.logger('dev'))
 
+// this makes connect take query params and put into req
+.use(connect.query())
+
 // link the custom module to certain endpoints
 .use('/api', activeCallFilterModule.activeCallFilter())
+
 .use('/public', activeCallFilterModule.activeCallFilter())
 
 // demonstrating that I can then have another filter
@@ -62,11 +67,44 @@ var app = connect()
 	res.end('hello world\n');
 })
 
+// demonstrate how to get to a path param
+// this is not currently working
+// i think i have to add this to a router
+// to behave as expected
+// so commenting out for the time being
+// .use('/public/echo2/:message', function(req, res, next) {
+// 	console.log("params: " + req.params);
+// 	var message = req.params.message;
+// 	res.end(message);
+// })
+
+// demonstrate how to get to a query param
+.use('/public/echo', function(req, res, next) {
+	var message = req.query.m;
+	res.end(message);
+})
+
+
 // this would represent an admin type of resource to display
 // info like the number of calls currently being performed
 .use('/admin/stats', activeCallFilterModule.activeCallResource());
 
-// this starts the actual http server
-require("http").createServer(app).listen(port, function() {
-	logger.info("now listening on %s", port);
+// this starts the actual http server.  I have seen two different
+// patterns to starting this, and I do not know if there is a real
+// difference
+// Simplified:
+// app.listen(port, function() {
+//   logger.info("now listening on %s", port);
+// });
+// Explicit:
+// require("http").createServer(app).listen(port, function() {
+//   logger.info("now listening on %s", port);
+// });
+
+
+require("http").createServer(app).listen(httpPort, function() {
+	logger.info("now listening on %s", httpPort);
 });
+// require("https").createServer(app).listen(httpsPort, function() {
+//   logger.info("now listening on %s", httpsPort);
+// });
