@@ -84,6 +84,7 @@ var app = connect()
 	res.end(message);
 })
 
+.use('/api/patient/id/labs', require('./lib/fhir-resource/fhir-resource.js').fetchLabs )
 
 // this would represent an admin type of resource to display
 // info like the number of calls currently being performed
