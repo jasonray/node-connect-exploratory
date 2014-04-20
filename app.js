@@ -9,19 +9,9 @@ var numberOfActiveCalls = 0;
 
 var activeCallFilterModule = require('./lib/request-filters/active-call-counter');
 
-// {"name":"server",
-// "hostname":"rayj-macbookpro.jayraynet",
-// "pid":14256,
-// "level":30,
-// "msg":"now listening on 8888",
-// "time":"2014-04-19T16:07:19.346Z",
-// "v":0}
-
-var morgan = require("morgan-jayray");
-
 var app = connect()
 
-.use( morgan({ format: 'dev', bunyanLogger: logger }) )
+.use(connect.logger('dev'))
 
 .use('/api', activeCallFilterModule.activeCallFilter())
 .use('/public', activeCallFilterModule.activeCallFilter())
