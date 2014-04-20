@@ -84,6 +84,7 @@ var app = connect()
 	res.end(message);
 })
 
+// example of a complex transformation using one format to another
 .use('/api/patient/id/labs', require('./lib/fhir-resource/fhir-resource.js').fetchLabs )
 
 // this would represent an admin type of resource to display
