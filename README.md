@@ -38,7 +38,7 @@ Consume it
 
 Hello
 -----
-The `hello` service returns a simple hello world phrase.
+The `hello` web service returns a simple hello world phrase.
 
 A simple usage of it would be:
 ```
@@ -50,6 +50,51 @@ Date: Tue, 15 Apr 2014 11:52:09 GMT
 Connection: keep-alive
 
 "hello world"
+```
+
+Expensive Fetch
+---------------
+The `expensive` web service returns a sample output, and takes about 2.5 seconds.
+
+A simple usage of it would be:
+```
+> curl -i http://127.0.0.1:8888/api/fetch/expensive
+HTTP/1.1 200 OK
+Date: Sun, 20 Apr 2014 12:25:33 GMT
+Connection: keep-alive
+Transfer-Encoding: chunked
+
+retrieved data 
+```
+
+Light Fetch
+-----------
+The `light` web service returns a sample output, and takes about 1 seconds.
+
+A simple usage of it would be:
+```
+> curl -i http://127.0.0.1:8888/api/fetch/light
+HTTP/1.1 200 OK
+Date: Sun, 20 Apr 2014 12:25:33 GMT
+Connection: keep-alive
+Transfer-Encoding: chunked
+
+retrieved data 
+```
+
+Admin Stats
+-----------
+The `stats` web service returns the number of calls currently being executed.
+
+Usage:
+```
+jayray> curl -i http://127.0.0.1:8888/admin/stats
+HTTP/1.1 200 OK
+Date: Sun, 20 Apr 2014 12:27:35 GMT
+Connection: keep-alive
+Transfer-Encoding: chunked
+
+active: 0; total: 1 
 ```
 
 Notes
